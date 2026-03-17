@@ -3,123 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ControSign | Advanced Fabrication & Printing</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <title>ControSign | Industrial Printing & Fabrication Specialists</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --tech-blue: #007aff;
-            --dark-bg: #0f1113;
-            --card-bg: #1a1d21;
-            --text-light: #e0e0e0;
+            --primary-blue: #00d2ff;
+            --deep-dark: #0a0b0d;
+            --card-gray: #161b22;
+            --text-silver: #c9d1d9;
             --accent-red: #ff3b30;
         }
 
-        * { box-sizing: border-box; }
-        body { 
-            font-family: 'Inter', sans-serif; 
-            background-color: var(--dark-bg); 
-            color: var(--text-light); 
-            margin: 0; 
-            line-height: 1.6;
-            scroll-behavior: smooth;
-        }
-
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Roboto', sans-serif; background-color: var(--deep-dark); color: var(--text-silver); line-height: 1.6; scroll-behavior: smooth; }
+        
         /* Navigation */
-        header { 
-            background: rgba(15, 17, 19, 0.95);
-            padding: 20px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid #333;
-        }
-        .logo { font-size: 1.6rem; font-weight: 800; color: white; letter-spacing: 1px; }
-        .logo span { color: var(--tech-blue); }
-        nav a { margin-left: 25px; text-decoration: none; color: var(--text-light); font-weight: 500; font-size: 0.9rem; transition: 0.3s; }
-        nav a:hover { color: var(--tech-blue); }
+        header { background: rgba(10, 11, 13, 0.95); padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #30363d; position: sticky; top: 0; z-index: 1000; }
+        .logo { font-family: 'Orbitron', sans-serif; font-size: 1.5rem; color: #fff; letter-spacing: 2px; }
+        .logo span { color: var(--primary-blue); }
+        nav a { margin-left: 20px; text-decoration: none; color: var(--text-silver); font-weight: bold; transition: 0.3s; }
+        nav a:hover { color: var(--primary-blue); }
 
         /* Hero Section */
         .hero { 
-            height: 80vh;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&q=80&w=1600');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            height: 70vh; 
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1565034946487-077786996e27?q=80&w=2070&auto=format&fit=crop'); 
+            background-size: cover; 
+            background-position: center; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
             text-align: center;
-            padding: 0 5%;
+            padding: 0 20px;
         }
-        .hero h1 { font-size: 4rem; margin: 0; font-weight: 800; letter-spacing: -2px; }
-        .hero p { font-size: 1.25rem; color: #aaa; max-width: 700px; margin: 20px 0; }
+        .hero h1 { font-family: 'Orbitron', sans-serif; font-size: 3.5rem; color: #fff; margin-bottom: 10px; }
+        .hero p { font-size: 1.2rem; max-width: 800px; color: #8b949e; }
 
-        /* Main Container */
-        .container { padding: 80px 5%; max-width: 1300px; margin: auto; }
-        .section-title { text-align: center; margin-bottom: 60px; }
-        .section-title h2 { font-size: 2.5rem; margin: 0; color: white; }
-        .section-title div { height: 4px; width: 60px; background: var(--tech-blue); margin: 15px auto; }
+        /* Content Sections */
+        .container { max-width: 1200px; margin: auto; padding: 80px 20px; }
+        h2 { font-family: 'Orbitron', sans-serif; font-size: 2rem; color: var(--primary-blue); margin-bottom: 40px; text-align: center; text-transform: uppercase; }
 
-        /* Service Cards - Following Screenshot Layout */
-        .services-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
-            gap: 30px; 
-        }
-        .card { 
-            background: var(--card-bg); 
-            border-radius: 12px; 
-            overflow: hidden; 
-            transition: 0.4s; 
-            border: 1px solid #2a2d32;
-        }
-        .card:hover { transform: translateY(-10px); border-color: var(--tech-blue); }
-        .card-img { height: 200px; width: 100%; object-fit: cover; }
-        .card-content { padding: 30px; }
-        .card-content h3 { color: white; margin-top: 0; font-size: 1.4rem; border-bottom: 1px solid #333; padding-bottom: 10px; }
-        .card-content ul { padding: 0; list-style: none; }
-        .card-content li { margin-bottom: 10px; color: #bbb; display: flex; align-items: center; }
-        .card-content li::before { content: "→"; color: var(--tech-blue); margin-right: 10px; font-weight: bold; }
+        /* Service Grid */
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
+        .service-card { background: var(--card-gray); border-radius: 12px; border: 1px solid #30363d; overflow: hidden; transition: 0.3s; }
+        .service-card:hover { transform: translateY(-10px); border-color: var(--primary-blue); }
+        .card-img { width: 100%; height: 220px; object-fit: cover; }
+        .card-body { padding: 30px; }
+        .card-body h3 { color: #fff; margin-bottom: 15px; font-size: 1.4rem; border-left: 4px solid var(--primary-blue); padding-left: 10px; }
+        .card-body ul { list-style: none; font-size: 0.95rem; }
+        .card-body li { margin-bottom: 8px; border-bottom: 1px solid #21262d; padding-bottom: 5px; }
 
         /* Contact Section */
-        .contact-grid { 
-            display: grid; 
-            grid-template-columns: 1fr 1.2fr; 
-            gap: 50px; 
-            background: #15181c; 
-            padding: 50px; 
-            border-radius: 20px; 
-        }
-        .comm-btns { display: flex; flex-direction: column; gap: 15px; }
-        .btn { 
-            text-decoration: none; 
-            padding: 18px; 
-            border-radius: 10px; 
-            font-weight: 700; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            color: white; 
-            transition: 0.3s;
+        .contact-flex { display: flex; flex-wrap: wrap; gap: 40px; background: var(--card-gray); padding: 40px; border-radius: 15px; border: 1px solid #30363d; }
+        .contact-info { flex: 1; min-width: 300px; }
+        .contact-map { flex: 1.5; min-width: 300px; height: 400px; border-radius: 10px; overflow: hidden; filter: grayscale(1) invert(0.9); border: 1px solid var(--primary-blue); }
+        
+        .click-btn { 
+            display: block; width: 100%; padding: 15px; margin-bottom: 15px; border-radius: 8px; 
+            text-align: center; text-decoration: none; font-weight: bold; color: white; transition: 0.3s; 
         }
         .wa-btn { background: #25D366; }
-        .call-btn { background: var(--tech-blue); }
-        .mail-btn { background: #444; }
-        .btn:hover { opacity: 0.85; transform: scale(1.02); }
+        .ph-btn { background: var(--primary-blue); }
+        .em-btn { background: #30363d; }
+        .click-btn:hover { opacity: 0.8; }
 
-        .map-box { border-radius: 15px; overflow: hidden; height: 400px; border: 1px solid #333; }
-        iframe { width: 100%; height: 100%; border: 0; filter: grayscale(1) invert(0.9) contrast(1.2); }
-
-        footer { text-align: center; padding: 50px; border-top: 1px solid #222; font-size: 0.8rem; color: #666; }
-
-        @media (max-width: 900px) {
-            .contact-grid { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 2.5rem; }
-        }
+        footer { text-align: center; padding: 40px; background: #010409; color: #8b949e; font-size: 0.9rem; }
     </style>
 </head>
 <body>
@@ -127,98 +76,90 @@
 <header>
     <div class="logo">CONTRO<span>SIGN</span></div>
     <nav>
-        <a href="#about">Capability</a>
+        <a href="#about">About</a>
         <a href="#services">Services</a>
         <a href="#contact">Contact</a>
     </nav>
 </header>
 
 <section class="hero">
-    <h1>Precision Engineering.</h1>
-    <p>Specialists in Large Format Printing, Fiber Laser Fabrication, and Advanced CNC Solutions.</p>
-    <a href="#contact" class="btn call-btn" style="width: auto; padding: 15px 40px;">Request a Quote</a>
+    <h1>Precision Signage & Fabrication</h1>
+    <p>Leading the industry in High-Resolution Printing, CO₂ Laser Cutting, and Advanced Metal Fabrication.</p>
 </section>
 
-<div class="container" id="services">
-    <div class="section-title">
-        <h2>Our Core Capabilities</h2>
-        <div></div>
-    </div>
+<div class="container" id="about">
+    <h2>Advanced Capabilities</h2>
+    <p style="text-align: center; max-width: 900px; margin: auto; font-size: 1.1rem; color: #8b949e;">
+        ControSign is a leading signage and fabrication company specializing in printing, cutting, engraving, and fabrication solutions for businesses and individuals[cite: 3]. 
+        With advanced technology and a commitment to precision, we deliver high-quality, customized products that enhance brand visibility and functionality[cite: 4].
+    </p>
+</div>
 
+<div class="container" id="services">
     <div class="services-grid">
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1562654501-a0ccc0fc3fb1?auto=format&fit=crop&q=80&w=800" class="card-img" alt="Large Format Printing">
-            <div class="card-content">
+        <div class="service-card">
+            <img src="https://images.unsplash.com/photo-1562654501-a0ccc0fc3fb1?q=80&w=1932&auto=format&fit=crop" class="card-img" alt="Large Format Printing">
+            <div class="card-body">
                 <h3>Printing & Cutting</h3>
                 <ul>
-                    <li>Large Format & Poster Printing</li>
-                    <li>Vinyl Cutting & Contour Cut</li>
-                    <li>Vehicle Wraps & Branding</li>
-                    <li>Wallpaper & T-Shirt Printing</li>
-                    <li>3D & Sublimation Printing</li>
+                    <li>Large Format & Poster Printing [cite: 9, 10]</li>
+                    <li>Vinyl Cutting & Contour Cut [cite: 11, 12]</li>
+                    <li>Banner & Wallpaper Custom Printing [cite: 13, 14]</li>
+                    <li>Vehicle Wrap & Fleet Branding [cite: 17]</li>
+                    <li>3D & Sublimation Printing [cite: 19, 20]</li>
                 </ul>
             </div>
         </div>
 
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1612690669207-fed642192c40?auto=format&fit=crop&q=80&w=800" class="card-img" alt="Laser Cutting">
-            <div class="card-content">
-                <h3>CO₂ Laser Systems</h3>
+        <div class="service-card">
+            <img src="https://images.unsplash.com/photo-1534067783941-51c9c23ecefd?q=80&w=1974&auto=format&fit=crop" class="card-img" alt="CNC Laser Cutting">
+            <div class="card-body">
+                <h3>CO₂ Laser Cutting</h3>
                 <ul>
-                    <li>Industrial Control Panel Labels</li>
-                    <li>Custom Stencil Cutting</li>
-                    <li>Personalised Wood Engraving</li>
-                    <li>Acrylic Cutting & Fabrication</li>
+                    <li>Precision Control Panel Labels [cite: 23]</li>
+                    <li>Custom Stencil Cutting [cite: 24]</li>
+                    <li>Personalised Wood Engraving [cite: 25]</li>
+                    <li>Detailed Acrylic Fabrications [cite: 22]</li>
                 </ul>
             </div>
         </div>
 
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&q=80&w=800" class="card-img" alt="Flatbed Cutting">
-            <div class="card-content">
+        <div class="service-card">
+            <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=2070&auto=format&fit=crop" class="card-img" alt="Steel Fabrication">
+            <div class="card-body">
+                <h3>Fibre Laser & Steel</h3>
+                <ul>
+                    <li>Powder-Coated Electrical Control Panels [cite: 43]</li>
+                    <li>Stainless Steel Address Signs [cite: 44]</li>
+                    <li>Gate Signs & Image Profiles [cite: 46]</li>
+                    <li>Steel Plate Cut, Bend & Weld [cite: 48]</li>
+                    <li>Induction Heating Solutions [cite: 49]</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="service-card">
+            <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=2070&auto=format&fit=crop" class="card-img" alt="UV Printing">
+            <div class="card-body">
+                <h3>Advanced Direct Printing</h3>
+                <ul>
+                    <li>Direct UV Object Printing [cite: 34]</li>
+                    <li>Stainless Steel Bottle Engraving [cite: 39]</li>
+                    <li>Nameplates & Industrial Tags [cite: 38]</li>
+                    <li>Raised Gloss Dome Printing [cite: 35]</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="service-card">
+            <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=2070&auto=format&fit=crop" class="card-img" alt="Flatbed Cutting">
+            <div class="card-body">
                 <h3>Flat Bed Solutions</h3>
                 <ul>
-                    <li>Custom Packaging (Print & Cut)</li>
-                    <li>Shape Milling (Max 20mm)</li>
-                    <li>Cardboard & Polycard Contouring</li>
-                    <li>Vinyl Kisscutting</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=800" class="card-img" alt="UV Printing">
-            <div class="card-content">
-                <h3>UV Direct Printing</h3>
-                <ul>
-                    <li>Direct-to-Object (Pens, Bottles, Balls)</li>
-                    <li>High-Gloss Dome Printing</li>
-                    <li>Promotional Branding</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1534067783941-51c9c23ecefd?auto=format&fit=crop&q=80&w=800" class="card-img" alt="Fiber Laser">
-            <div class="card-content">
-                <h3>Fibre Laser Engraving</h3>
-                <ul>
-                    <li>Metal Nameplates & Industrial Tags</li>
-                    <li>Steel Bottle & Flask Branding</li>
-                    <li>Detailed Image Engraving on Steel</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&q=80&w=800" class="card-img" alt="Steel Fabrication">
-            <div class="card-content">
-                <h3>Steel Fabrication</h3>
-                <ul>
-                    <li>Fibre Laser Cutting & Bending</li>
-                    <li>Powder Coated Electrical Panels</li>
-                    <li>Stainless Steel Address Signs</li>
-                    <li>Custom Brackets & Welding</li>
+                    <li>Customised Packaging Print & Cut [cite: 28]</li>
+                    <li>Shape Milling (Max 20mm Thick) [cite: 29]</li>
+                    <li>Contour Cut Various Substrates [cite: 30]</li>
+                    <li>Precision Vinyl Kisscutting [cite: 31]</li>
                 </ul>
             </div>
         </div>
@@ -226,25 +167,31 @@
 </div>
 
 <section id="contact" class="container">
-    <div class="contact-grid">
+    <h2>Contact & Location</h2>
+    <div class="contact-flex">
         <div class="contact-info">
-            <h2>Connect with Experts</h2>
-            <p>Based in Briardene, we provide specialized solutions across South Africa. Click below to reach our team immediately.</p>
-            <div class="comm-btns">
-                <a href="https://wa.me/27835223700" class="btn wa-btn" target="_blank">WHATSAPP: 083 522 3700</a>
-                <a href="tel:0315634497" class="btn call-btn">OFFICE: 031 563 4497</a>
-                <a href="mailto:Devash@controsign.co.za" class="btn mail-btn">EMAIL: Devash@controsign.co.za</a>
-            </div>
-            <p style="margin-top: 30px; font-weight: bold;">📍 28 Cordova Close, Briardene</p>
+            <p style="margin-bottom: 25px; font-size: 1.2rem;">
+                <strong>Address:</strong><br>
+                Unit 13, Reach Park, 28 Cordova Close, Briardene 
+            </p>
+            
+            <a href="https://wa.me/27835223700" class="click-btn wa-btn" target="_blank">Chat on WhatsApp</a>
+            <a href="tel:0315634497" class="click-btn ph-btn">Call Office: 031 563 4497</a>
+            <a href="mailto:Devash@controsign.co.za" class="click-btn em-btn">Email Enquiries</a>
         </div>
-        <div class="map-box">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3462.623432168516!2d31.0118501!3d-29.8000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1ef7071200000001%3A0x0!2s28%20Cordova%20Close%2C%20Briardene!5e0!3m2!1sen!2sza!4v1625650000000!5m2!1sen!2sza" allowfullscreen="" loading="lazy"></iframe>
+        
+        <div class="contact-map">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3462.6358482613583!2d31.0118501!3d-29.8025244!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1ef7aa0000000000%3A0x0!2zMjjCsDQ4JzA5LjEiUyAzMcKwMDAnNDIuNyJF!5e0!3m2!1sen!2sza!4v1710688000000!5m2!1sen!2sza" 
+                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+            </iframe>
         </div>
     </div>
 </section>
 
 <footer>
-    <p>CONTROSIGN t/a CONTROLECTRIC (PTY) LTD | © 2026. All Rights Reserved.</p>
+    <p>© 2026 ControSign Specialists in Printing, Cutting & Fabrication </p>
+    <p>Trading as Controlectric (Pty) LTD [cite: 58]</p>
 </footer>
 
 </body>
