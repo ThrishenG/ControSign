@@ -1,251 +1,1224 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ControSign | Advanced Fabrication & Printing</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    <style>
-        :root {
-            --tech-blue: #007aff;
-            --dark-bg: #0f1113;
-            --card-bg: #1a1d21;
-            --text-light: #e0e0e0;
-            --accent-red: #ff3b30;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CONTROSIGN | Precision Engineering, Laser Fabrication & UV Printing</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@500;700;800;900&display=swap" rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
 
-        * { box-sizing: border-box; }
-        body { 
-            font-family: 'Inter', sans-serif; 
-            background-color: var(--dark-bg); 
-            color: var(--text-light); 
-            margin: 0; 
-            line-height: 1.6;
-            scroll-behavior: smooth;
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Outfit', 'sans-serif'],
+          },
+          colors: {
+            contro: {
+              bg: '#0b0d11',
+              card: '#161920',
+              border: '#262b36',
+              blue: '#0070f3',
+              blueHover: '#005bb5',
+              green: '#22c55e',
+            }
+          }
         }
+      }
+    }
+  </script>
 
-        /* Navigation */
-        header { 
-            background: rgba(15, 17, 19, 0.95);
-            padding: 20px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid #333;
-        }
-        .logo { font-size: 1.6rem; font-weight: 800; color: white; letter-spacing: 1px; }
-        .logo span { color: var(--tech-blue); }
-        nav a { margin-left: 25px; text-decoration: none; color: var(--text-light); font-weight: 500; font-size: 0.9rem; transition: 0.3s; }
-        nav a:hover { color: var(--tech-blue); }
+  <style>
+    /* Custom Dark Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0b0d11;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #262b36;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #3b4252;
+    }
 
-        /* Hero Section */
-        .hero { 
-            height: 80vh;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&q=80&w=1600');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 5%;
-        }
-        .hero h1 { font-size: 4rem; margin: 0; font-weight: 800; letter-spacing: -2px; }
-        .hero p { font-size: 1.25rem; color: #aaa; max-width: 700px; margin: 20px 0; }
+    /* Capability Card List Styling */
+    .capability-list li {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 0.65rem;
+      color: #94a3b8;
+      font-size: 0.875rem;
+      transition: color 0.2s;
+    }
+    .capability-list li:hover {
+      color: #f8fafc;
+    }
+    .capability-list li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: #0070f3;
+      font-weight: 700;
+    }
 
-        /* Main Container */
-        .container { padding: 80px 5%; max-width: 1300px; margin: auto; }
-        .section-title { text-align: center; margin-bottom: 60px; }
-        .section-title h2 { font-size: 2.5rem; margin: 0; color: white; }
-        .section-title div { height: 4px; width: 60px; background: var(--tech-blue); margin: 15px auto; }
-
-        /* Service Cards - Following Screenshot Layout */
-        .services-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
-            gap: 30px; 
-        }
-        .card { 
-            background: var(--card-bg); 
-            border-radius: 12px; 
-            overflow: hidden; 
-            transition: 0.4s; 
-            border: 1px solid #2a2d32;
-        }
-        .card:hover { transform: translateY(-10px); border-color: var(--tech-blue); }
-        .card-img { height: 200px; width: 100%; object-fit: cover; }
-        .card-content { padding: 30px; }
-        .card-content h3 { color: white; margin-top: 0; font-size: 1.4rem; border-bottom: 1px solid #333; padding-bottom: 10px; }
-        .card-content ul { padding: 0; list-style: none; }
-        .card-content li { margin-bottom: 10px; color: #bbb; display: flex; align-items: center; }
-        .card-content li::before { content: "→"; color: var(--tech-blue); margin-right: 10px; font-weight: bold; }
-
-        /* Contact Section */
-        .contact-grid { 
-            display: grid; 
-            grid-template-columns: 1fr 1.2fr; 
-            gap: 50px; 
-            background: #15181c; 
-            padding: 50px; 
-            border-radius: 20px; 
-        }
-        .comm-btns { display: flex; flex-direction: column; gap: 15px; }
-        .btn { 
-            text-decoration: none; 
-            padding: 18px; 
-            border-radius: 10px; 
-            font-weight: 700; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            color: white; 
-            transition: 0.3s;
-        }
-        .wa-btn { background: #25D366; }
-        .call-btn { background: var(--tech-blue); }
-        .mail-btn { background: #444; }
-        .btn:hover { opacity: 0.85; transform: scale(1.02); }
-
-        .map-box { border-radius: 15px; overflow: hidden; height: 400px; border: 1px solid #333; }
-        iframe { width: 100%; height: 100%; border: 0; filter: grayscale(1) invert(0.9) contrast(1.2); }
-
-        footer { text-align: center; padding: 50px; border-top: 1px solid #222; font-size: 0.8rem; color: #666; }
-
-        @media (max-width: 900px) {
-            .contact-grid { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 2.5rem; }
-        }
-    </style>
+    /* Print-friendly styles for Official PDF Quotes */
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+      #quote-modal-content, #quote-modal-content * {
+        visibility: visible;
+      }
+      #quote-modal-content {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        background: white !important;
+        color: black !important;
+      }
+    }
+  </style>
 </head>
-<body>
+<body class="bg-contro-bg text-slate-100 font-sans min-h-screen flex flex-col antialiased selection:bg-contro-blue selection:text-white">
 
-<header>
-    <div class="logo">CONTRO<span>SIGN</span></div>
-    <nav>
-        <a href="#about">Capability</a>
-        <a href="#services">Services</a>
-        <a href="#contact">Contact</a>
-    </nav>
-</header>
+  <!-- Sticky Navigation Header -->
+  <header class="sticky top-0 z-40 bg-contro-bg/90 backdrop-blur-md border-b border-contro-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <!-- Brand Logo -->
+      <a href="#" class="text-2xl font-black tracking-wider font-display flex items-center">
+        <span class="text-white">CONTRO</span><span class="text-contro-blue">SIGN</span>
+      </a>
 
-<section class="hero">
-    <h1>Precision Engineering.</h1>
-    <p>Specialists in Large Format Printing, Fiber Laser Fabrication, and Advanced CNC Solutions.</p>
-    <a href="#contact" class="btn call-btn" style="width: auto; padding: 15px 40px;">Request a Quote</a>
-</section>
+      <!-- Navigation Links & Quote Trigger -->
+      <div class="flex items-center gap-6 sm:gap-8">
+        <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+          <a href="#capabilities" class="hover:text-white transition">Capability</a>
+          <a href="#quote-section" class="hover:text-white transition">Services & Quote</a>
+          <a href="#contact" class="hover:text-white transition">Contact</a>
+        </nav>
 
-<div class="container" id="services">
-    <div class="section-title">
-        <h2>Our Core Capabilities</h2>
-        <div></div>
+        <!-- Floating Quote Drawer Button -->
+        <button onclick="openCart()" class="relative flex items-center gap-2.5 bg-contro-card hover:bg-slate-800 border border-contro-border text-white px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm shadow-lg transition active:scale-95">
+          <i data-lucide="file-Spreadsheet" class="w-4 h-4 text-contro-blue"></i>
+          <span>Quote List</span>
+          <span id="cart-counter" class="bg-contro-blue text-white text-xs font-extrabold w-5 h-5 rounded-full flex items-center justify-center">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative min-h-[75vh] flex items-center justify-center text-center px-4 overflow-hidden border-b border-contro-border">
+    <!-- Background Image with Dark Radial Overlay -->
+    <div class="absolute inset-0 z-0">
+      <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1920&q=80" alt="Precision Engineering Background" class="w-full h-full object-cover opacity-25 scale-105">
+      <div class="absolute inset-0 bg-gradient-to-b from-contro-bg/80 via-contro-bg/60 to-contro-bg"></div>
     </div>
 
-    <div class="services-grid">
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1562654501-a0ccc0fc3fb1?auto=format&fit=crop&q=80&w=800" class="card-img" alt="Large Format Printing">
-            <div class="card-content">
-                <h3>Printing & Cutting</h3>
-                <ul>
-                    <li>Large Format & Poster Printing</li>
-                    <li>Vinyl Cutting & Contour Cut</li>
-                    <li>Vehicle Wraps & Branding</li>
-                    <li>Wallpaper & T-Shirt Printing</li>
-                    <li>3D & Sublimation Printing</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="https://images.pexels.com/photos/30983996/pexels-photo-30983996.jpeg" class="card-img" alt="Laser Cutting">
-            <div class="card-content">
-                <h3>CO₂ Laser Systems</h3>
-                <ul>
-                    <li>Industrial Control Panel Labels</li>
-                    <li>Custom Stencil Cutting</li>
-                    <li>Personalised Wood Engraving</li>
-                    <li>Acrylic Cutting & Fabrication</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&q=80&w=800" class="card-img" alt="Flatbed Cutting">
-            <div class="card-content">
-                <h3>Flat Bed Solutions</h3>
-                <ul>
-                    <li>Custom Packaging (Print & Cut)</li>
-                    <li>Shape Milling (Max 20mm)</li>
-                    <li>Cardboard & Polycard Contouring</li>
-                    <li>Vinyl Kisscutting</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="https://images.squarespace-cdn.com/content/v1/5a802676b7411c2497540b80/2ed78a46-350a-4eb9-8813-76ce7175463c/ROLAND-DG-MO-Q240-BANNER-2-TEXINTEL.jpg" class="card-img" alt="UV Printing">
-            <div class="card-content">
-                <h3>UV Direct Printing</h3>
-                <ul>
-                    <li>Direct-to-Object (Pens, Bottles, Golf Balls)</li>
-                    <li>High-Gloss Dome Printing</li>
-                    <li>Promotional Branding</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="https://images.pexels.com/photos/7254410/pexels-photo-7254410.jpeg" class="card-img" alt="Fiber Laser">
-            <div class="card-content">
-                <h3>Fibre Laser Engraving</h3>
-                <ul>
-                    <li>Metal Nameplates & Industrial Tags</li>
-                    <li>Steel Bottle & Flask Branding</li>
-                    <li>Detailed Image Engraving on Steel</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&q=80&w=800" class="card-img" alt="Steel Fabrication">
-            <div class="card-content">
-                <h3>Steel Fabrication</h3>
-                <ul>
-                    <li>Fibre Laser Cutting & Bending</li>
-                    <li>Powder Coated Electrical Panels</li>
-                    <li>Stainless Steel Address Signs</li>
-                    <li>Custom Brackets & Welding</li>
-                </ul>
-            </div>
-        </div>
+    <div class="relative z-10 max-w-4xl mx-auto space-y-6 py-20">
+      <h1 class="text-4xl sm:text-6xl md:text-7xl font-black text-white font-display tracking-tight">
+        Precision Engineering.
+      </h1>
+      <p class="text-slate-400 text-base sm:text-xl max-w-2xl mx-auto font-normal leading-relaxed">
+        Specialists in Large Format Printing, Fiber Laser Fabrication, UV Direct Branding, and Advanced CNC Solutions.
+      </p>
+      <div class="pt-4 flex flex-wrap justify-center gap-4">
+        <a href="#quote-section" class="px-8 py-4 bg-contro-blue hover:bg-contro-blueHover text-white font-bold rounded-xl text-sm sm:text-base shadow-lg shadow-contro-blue/25 transition active:scale-95">
+          Request a Quote
+        </a>
+        <a href="#capabilities" class="px-8 py-4 bg-contro-card hover:bg-slate-800 text-slate-200 border border-contro-border font-bold rounded-xl text-sm sm:text-base transition">
+          Explore Capabilities
+        </a>
+      </div>
     </div>
-</div>
+  </section>
 
-<section id="contact" class="container">
-    <div class="contact-grid">
-        <div class="contact-info">
-            <h2>Connect with Experts</h2>
-            <p>Based in Briardene, we provide specialized solutions across South Africa. Click below to reach our team immediately.</p>
-            <div class="comm-btns">
-                <a href="https://wa.me/27835223700" class="btn wa-btn" target="_blank">WhatsApp Us</a>
-                <a href="tel:0315634497" class="btn call-btn">Call Office</a>
-                <a href="mailto:Devash@controsign.co.za" class="btn mail-btn"> Email Enquiries</a>
-            </div>
-            <p style="margin-top: 30px; font-weight: bold;">📍 Unit 13, Reach Park, 28 Cordova Close, Briardene</p>
-        </div>
-        <div class="map-box">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3462.623432168516!2d31.0118501!3d-29.8000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1ef7071200000001%3A0x0!2s28%20Cordova%20Close%2C%20Briardene!5e0!3m2!1sen!2sza!4v1625650000000!5m2!1sen!2sza" allowfullscreen="" loading="lazy"></iframe>
-        </div>
+  <!-- Our Core Capabilities Section -->
+  <section id="capabilities" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+    <div class="text-center mb-14">
+      <h2 class="text-3xl sm:text-4xl font-black text-white font-display tracking-tight">Our Core Capabilities</h2>
+      <div class="w-14 h-1 bg-contro-blue mx-auto mt-4 rounded-full"></div>
     </div>
-</section>
 
-<footer>
-    <p>CONTROSIGN t/a CONTROLECTRIC (PTY) LTD | © 2026. All Rights Reserved.</p>
-</footer>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      
+      <!-- Card 1: Printing & Cutting -->
+      <div class="bg-contro-card border border-contro-border rounded-2xl overflow-hidden hover:border-contro-blue/60 transition duration-300 flex flex-col justify-between group">
+        <div>
+          <div class="h-52 overflow-hidden bg-slate-900">
+            <img src="https://images.unsplash.com/photo-1562654501-a0ccc0fc3fb1?auto=format&fit=crop&w=800&q=80" alt="Printing & Cutting" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+          </div>
+          <div class="p-7 card-content">
+            <h3 class="text-xl font-bold text-white pb-4 mb-4 border-b border-contro-border">Printing & Cutting</h3>
+            <ul class="capability-list">
+              <li>Large Format & Poster Printing</li>
+              <li>Vinyl Cutting & Contour Cut</li>
+              <li>Vehicle Wraps & Branding</li>
+              <li>Wallpaper & T-Shirt Printing</li>
+              <li>3D & Sublimation Printing</li>
+            </ul>
+          </div>
+        </div>
+        <div class="px-7 pb-6">
+          <button onclick="quickSelectCategory('printing')" class="w-full py-2.5 bg-slate-800/80 hover:bg-contro-blue text-xs font-bold text-slate-200 hover:text-white rounded-xl border border-contro-border transition flex items-center justify-center gap-2">
+            <i data-lucide="plus-circle" class="w-4 h-4"></i> Quote Printing Services
+          </button>
+        </div>
+      </div>
 
+      <!-- Card 2: CO2 Laser Systems -->
+      <div class="bg-contro-card border border-contro-border rounded-2xl overflow-hidden hover:border-contro-blue/60 transition duration-300 flex flex-col justify-between group">
+        <div>
+          <div class="h-52 overflow-hidden bg-slate-900">
+            <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80" alt="CO2 Laser Systems" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+          </div>
+          <div class="p-7 card-content">
+            <h3 class="text-xl font-bold text-white pb-4 mb-4 border-b border-contro-border">CO₂ Laser Systems</h3>
+            <ul class="capability-list">
+              <li>Industrial Control Panel Labels</li>
+              <li>Custom Stencil Cutting</li>
+              <li>Personalised Wood Engraving</li>
+              <li>Acrylic Cutting & Fabrication</li>
+            </ul>
+          </div>
+        </div>
+        <div class="px-7 pb-6">
+          <button onclick="quickSelectCategory('laser')" class="w-full py-2.5 bg-slate-800/80 hover:bg-contro-blue text-xs font-bold text-slate-200 hover:text-white rounded-xl border border-contro-border transition flex items-center justify-center gap-2">
+            <i data-lucide="plus-circle" class="w-4 h-4"></i> Quote CO₂ Laser Work
+          </button>
+        </div>
+      </div>
+
+      <!-- Card 3: Flat Bed Solutions -->
+      <div class="bg-contro-card border border-contro-border rounded-2xl overflow-hidden hover:border-contro-blue/60 transition duration-300 flex flex-col justify-between group">
+        <div>
+          <div class="h-52 overflow-hidden bg-slate-900">
+            <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=800&q=80" alt="Flat Bed Solutions" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+          </div>
+          <div class="p-7 card-content">
+            <h3 class="text-xl font-bold text-white pb-4 mb-4 border-b border-contro-border">Flat Bed Solutions</h3>
+            <ul class="capability-list">
+              <li>Custom Packaging (Print & Cut)</li>
+              <li>Shape Milling (Max 20mm)</li>
+              <li>Cardboard & Polycard Contouring</li>
+              <li>Vinyl Kisscutting</li>
+            </ul>
+          </div>
+        </div>
+        <div class="px-7 pb-6">
+          <button onclick="quickSelectCategory('flatbed')" class="w-full py-2.5 bg-slate-800/80 hover:bg-contro-blue text-xs font-bold text-slate-200 hover:text-white rounded-xl border border-contro-border transition flex items-center justify-center gap-2">
+            <i data-lucide="plus-circle" class="w-4 h-4"></i> Quote Flat Bed Work
+          </button>
+        </div>
+      </div>
+
+      <!-- Card 4: UV Direct Printing (Requested Snippet) -->
+      <div class="bg-contro-card border border-contro-blue/80 rounded-2xl overflow-hidden shadow-lg shadow-contro-blue/5 hover:border-contro-blue transition duration-300 flex flex-col justify-between group">
+        <div>
+          <div class="h-52 overflow-hidden bg-slate-900 relative">
+            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80" alt="UV Direct Printing" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+            <span class="absolute top-3 right-3 bg-contro-blue text-white text-[10px] font-black uppercase px-2.5 py-1 rounded-full tracking-wider">Featured Service</span>
+          </div>
+          <div class="p-7 card-content">
+            <h3 class="text-xl font-bold text-white pb-4 mb-4 border-b border-contro-border">UV Direct Printing</h3>
+            <ul class="capability-list">
+              <li>Direct-to-Object (Pens, Bottles, Balls)</li>
+              <li>Direct-to-Object (Pens, Bottles, Golf Balls)</li>
+              <li>High-Gloss Dome Printing</li>
+              <li>Promotional Branding</li>
+            </ul>
+          </div>
+        </div>
+        <div class="px-7 pb-6">
+          <button onclick="quickSelectCategory('uv-printing')" class="w-full py-2.5 bg-contro-blue hover:bg-contro-blueHover text-xs font-bold text-white rounded-xl transition flex items-center justify-center gap-2">
+            <i data-lucide="plus-circle" class="w-4 h-4"></i> Quote UV Direct Printing
+          </button>
+        </div>
+      </div>
+
+      <!-- Card 5: Fiber Laser & Metal Marking -->
+      <div class="bg-contro-card border border-contro-border rounded-2xl overflow-hidden hover:border-contro-blue/60 transition duration-300 flex flex-col justify-between group">
+        <div>
+          <div class="h-52 overflow-hidden bg-slate-900">
+            <img src="https://images.unsplash.com/photo-1535813547-99c456a41d4a?auto=format&fit=crop&w=800&q=80" alt="Fiber Laser Engraving" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+          </div>
+          <div class="p-7 card-content">
+            <h3 class="text-xl font-bold text-white pb-4 mb-4 border-b border-contro-border">Fiber Laser Fabrication</h3>
+            <ul class="capability-list">
+              <li>Stainless Steel & Anodised Marking</li>
+              <li>Serial Number & QR Rating Plates</li>
+              <li>Industrial Valve & Cable Tags</li>
+              <li>Precision Metal Etching</li>
+            </ul>
+          </div>
+        </div>
+        <div class="px-7 pb-6">
+          <button onclick="quickSelectCategory('laser')" class="w-full py-2.5 bg-slate-800/80 hover:bg-contro-blue text-xs font-bold text-slate-200 hover:text-white rounded-xl border border-contro-border transition flex items-center justify-center gap-2">
+            <i data-lucide="plus-circle" class="w-4 h-4"></i> Quote Fiber Laser
+          </button>
+        </div>
+      </div>
+
+      <!-- Card 6: CNC Routing & Fabrication -->
+      <div class="bg-contro-card border border-contro-border rounded-2xl overflow-hidden hover:border-contro-blue/60 transition duration-300 flex flex-col justify-between group">
+        <div>
+          <div class="h-52 overflow-hidden bg-slate-900">
+            <img src="https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?auto=format&fit=crop&w=800&q=80" alt="CNC Solutions" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+          </div>
+          <div class="p-7 card-content">
+            <h3 class="text-xl font-bold text-white pb-4 mb-4 border-b border-contro-border">Advanced CNC Solutions</h3>
+            <ul class="capability-list">
+              <li>3D Architectural & Sign Lettering</li>
+              <li>Aluminium Composite (ACM) Routing</li>
+              <li>Custom Jig & Enclosure Profiling</li>
+              <li>Perspex & Engineering Plastics</li>
+            </ul>
+          </div>
+        </div>
+        <div class="px-7 pb-6">
+          <button onclick="quickSelectCategory('flatbed')" class="w-full py-2.5 bg-slate-800/80 hover:bg-contro-blue text-xs font-bold text-slate-200 hover:text-white rounded-xl border border-contro-border transition flex items-center justify-center gap-2">
+            <i data-lucide="plus-circle" class="w-4 h-4"></i> Quote CNC Solutions
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Interactive Service Catalogue & Quote Builder Section (Referenced from JT Supplies) -->
+  <section id="quote-section" class="py-16 px-4 sm:px-6 lg:px-8 bg-[#0e1117] border-y border-contro-border">
+    <div class="max-w-7xl mx-auto">
+      
+      <!-- Section Header & Pricing Mode Switcher -->
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-10 border-b border-contro-border">
+        <div>
+          <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-contro-blue/10 border border-contro-blue/30 text-contro-blue text-xs font-bold uppercase tracking-wider mb-3">
+            Instant Quote Portal
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-black text-white font-display tracking-tight">
+            Build Your Custom Job Quote
+          </h2>
+          <p class="text-slate-400 text-sm mt-1 max-w-2xl">
+            Select services below to generate an instant printable PDF quotation or send your job specifications directly to our Briardene production team on WhatsApp.
+          </p>
+        </div>
+
+        <!-- Tier Switcher (Standard Run vs Bulk Trade Run 10+) -->
+        <div class="bg-contro-card p-4 rounded-2xl border border-contro-border flex flex-col sm:flex-row items-center gap-4">
+          <div class="text-left">
+            <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">Order Volume Tier</span>
+            <span id="active-tier-headline" class="text-sm font-extrabold text-white">Standard Production Run</span>
+          </div>
+          <div class="grid grid-cols-2 p-1 bg-contro-bg rounded-xl border border-contro-border">
+            <button id="mode-retail-btn" onclick="setPricingMode('retail')" class="px-3 py-2 text-xs font-bold rounded-lg transition bg-contro-blue text-white shadow-xs">
+              Single / Standard
+            </button>
+            <button id="mode-wholesale-btn" onclick="setPricingMode('wholesale')" class="px-3 py-2 text-xs font-bold rounded-lg text-slate-400 hover:text-white transition">
+              Trade Bulk (10+)
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Filter Tabs & Search Bar -->
+      <div class="flex flex-col md:flex-row gap-4 items-center justify-between my-8">
+        <!-- Category Pills -->
+        <div class="flex items-center gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0">
+          <button onclick="filterCategory('all')" data-cat="all" class="cat-tab px-4 py-2.5 rounded-xl text-xs font-bold whitespace-nowrap bg-contro-blue text-white transition">
+            All Services (<span id="count-all">0</span>)
+          </button>
+          <button onclick="filterCategory('uv-printing')" data-cat="uv-printing" class="cat-tab px-4 py-2.5 rounded-xl text-xs font-semibold whitespace-nowrap bg-contro-card text-slate-300 border border-contro-border hover:border-slate-600 transition">
+            UV Direct Printing (<span id="count-uv">0</span>)
+          </button>
+          <button onclick="filterCategory('printing')" data-cat="printing" class="cat-tab px-4 py-2.5 rounded-xl text-xs font-semibold whitespace-nowrap bg-contro-card text-slate-300 border border-contro-border hover:border-slate-600 transition">
+            Printing & Cutting (<span id="count-printing">0</span>)
+          </button>
+          <button onclick="filterCategory('laser')" data-cat="laser" class="cat-tab px-4 py-2.5 rounded-xl text-xs font-semibold whitespace-nowrap bg-contro-card text-slate-300 border border-contro-border hover:border-slate-600 transition">
+            CO₂ & Fiber Laser (<span id="count-laser">0</span>)
+          </button>
+          <button onclick="filterCategory('flatbed')" data-cat="flatbed" class="cat-tab px-4 py-2.5 rounded-xl text-xs font-semibold whitespace-nowrap bg-contro-card text-slate-300 border border-contro-border hover:border-slate-600 transition">
+            Flat Bed & CNC (<span id="count-flatbed">0</span>)
+          </button>
+        </div>
+
+        <!-- Search Input -->
+        <div class="relative w-full md:w-72">
+          <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2"></i>
+          <input type="text" id="search-box" onkeyup="handleSearch()" placeholder="Search UV pens, dome, laser, vinyl..." class="w-full pl-10 pr-4 py-2.5 text-xs bg-contro-card border border-contro-border rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-contro-blue">
+        </div>
+      </div>
+
+      <!-- Dynamic Service Items Grid -->
+      <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <!-- Populated by JavaScript -->
+      </div>
+
+      <!-- Empty State -->
+      <div id="empty-state" class="hidden text-center py-14 bg-contro-card rounded-2xl border border-dashed border-contro-border my-6">
+        <i data-lucide="search-x" class="w-10 h-10 text-slate-500 mx-auto mb-2"></i>
+        <h3 class="text-sm font-bold text-white">No matching services found</h3>
+        <p class="text-xs text-slate-400 mt-1">Try clearing your search filter or selecting another category.</p>
+        <button onclick="resetFilters()" class="mt-4 px-4 py-2 bg-contro-blue text-white rounded-xl text-xs font-bold">Reset Filters</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Connect with Experts & Map Section (Retained from Screenshot 1) -->
+  <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto w-full">
+    <div class="bg-contro-card border border-contro-border rounded-3xl p-6 sm:p-10 lg:p-12 shadow-2xl">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+        
+        <!-- Left Column: Action Buttons & Address -->
+        <div class="lg:col-span-6 space-y-6">
+          <div>
+            <h2 class="text-2xl sm:text-3xl font-black text-white font-display">Connect with Experts</h2>
+            <p class="text-slate-400 text-sm sm:text-base mt-2 leading-relaxed">
+              Based in Briardene, we provide specialized solutions across South Africa. Click below to reach our team immediately.
+            </p>
+          </div>
+
+          <div class="space-y-3.5 pt-2">
+            <!-- Green WhatsApp Button -->
+            <a href="https://wa.me/27820000000?text=Hi%20ControSign%2C%20I%20would%20like%20to%20enquire%20about%20your%20services." target="_blank" class="w-full py-4 px-6 bg-[#22c55e] hover:bg-[#16a34a] text-white font-bold rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-green-600/20 transition active:scale-98 text-sm sm:text-base">
+              WhatsApp Us
+            </a>
+
+            <!-- Blue Call Office Button -->
+            <a href="tel:+27310000000" class="w-full py-4 px-6 bg-[#0070f3] hover:bg-[#005bb5] text-white font-bold rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-blue-600/20 transition active:scale-98 text-sm sm:text-base">
+              Call Office
+            </a>
+
+            <!-- Dark Grey Email Enquiries Button -->
+            <a href="mailto:info@controsign.co.za" class="w-full py-4 px-6 bg-[#2a2e37] hover:bg-[#353a46] text-white font-bold rounded-xl flex items-center justify-center gap-2 border border-slate-700 transition active:scale-98 text-sm sm:text-base">
+              Email Enquiries
+            </a>
+          </div>
+
+          <div class="pt-2 flex items-center gap-2.5 text-xs sm:text-sm font-semibold text-slate-300">
+            <span class="text-rose-500">📍</span>
+            <span>Unit 13, Reach Park, 28 Cordova Close, Briardene</span>
+          </div>
+        </div>
+
+        <!-- Right Column: Embedded Google Map -->
+        <div class="lg:col-span-6 h-80 sm:h-96 w-full rounded-2xl overflow-hidden border border-contro-border shadow-inner bg-slate-900">
+          <iframe 
+            title="ControSign Location - Unit 13, Reach Park, 28 Cordova Close, Briardene, Durban"
+            src="https://www.google.com/maps?q=Reach+Park,+28+Cordova+Close,+Briardene,+Durban,+4051&output=embed" 
+            width="100%" 
+            height="100%" 
+            style="border:0; filter: invert(90%) hue-rotate(180deg) contrast(95%);" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-contro-bg border-t border-contro-border py-8 px-4 sm:px-6 text-xs text-slate-500 mt-auto">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2">
+        <span class="font-black text-white tracking-wider font-display text-sm">CONTRO<span class="text-contro-blue">SIGN</span></span>
+        <span>| Precision Engineering & Commercial Branding</span>
+      </div>
+      <p>&copy; <span id="year-tag"></span> CONTROSIGN. Unit 13, Reach Park, 28 Cordova Close, Briardene, Durban.</p>
+    </div>
+  </footer>
+
+  <!-- ================================================================= -->
+  <!-- SLIDE-OVER QUOTE DRAWER (ADAPTED FROM JT SUPPLIES)                -->
+  <!-- ================================================================= -->
+  <div id="cart-drawer-overlay" onclick="closeCart()" class="fixed inset-0 bg-black/75 backdrop-blur-xs z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+
+  <aside id="cart-drawer" class="fixed top-0 right-0 h-full w-full max-w-md bg-contro-card border-l border-contro-border z-50 shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col text-slate-100">
+    <!-- Drawer Header -->
+    <div class="p-5 border-b border-contro-border flex items-center justify-between bg-contro-bg">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-xl bg-contro-blue/20 text-contro-blue flex items-center justify-center">
+          <i data-lucide="layers" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <h3 class="font-extrabold text-white text-base font-display">CONTROSIGN Quote Builder</h3>
+          <p class="text-[11px] text-slate-400" id="cart-tier-label">Standard Production Pricing</p>
+        </div>
+      </div>
+      <button onclick="closeCart()" class="p-2 text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg transition">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+    </div>
+
+    <!-- Quote Items Container -->
+    <div id="cart-items-container" class="flex-grow overflow-y-auto p-5 space-y-3">
+      <!-- Populated via JS -->
+    </div>
+
+    <!-- Quote Drawer Footer -->
+    <div class="p-5 border-t border-contro-border bg-contro-bg space-y-4">
+      
+      <!-- Dispatch / Collection Option -->
+      <div>
+        <label class="block text-xs font-bold text-slate-300 mb-1.5">Collection or Delivery Option:</label>
+        <select id="cart-delivery-zone" onchange="updateCartTotals()" class="w-full p-2.5 text-xs bg-contro-card border border-contro-border rounded-xl text-white focus:outline-none focus:border-contro-blue font-medium">
+          <option value="pickup">Briardene Workshop Collection (Unit 13, Reach Park) - Free</option>
+          <option value="durban_metro">Durban Metro Courier Delivery (+R150.00)</option>
+          <option value="kzn_regional">KZN Regional Freight (+R250.00)</option>
+          <option value="national_courier">National Courier South Africa (+R350.00)</option>
+        </select>
+      </div>
+
+      <!-- Client Details & Custom Artwork Notes -->
+      <div class="space-y-2">
+        <input type="text" id="cust-name-input" placeholder="Your Name or Company Name" class="w-full px-3 py-2 text-xs bg-contro-card border border-contro-border rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-contro-blue">
+        <input type="tel" id="cust-phone-input" placeholder="Phone / WhatsApp Number" class="w-full px-3 py-2 text-xs bg-contro-card border border-contro-border rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-contro-blue">
+        <input type="text" id="cust-notes-input" placeholder="Job specs (e.g. dimensions, material, artwork ready)" class="w-full px-3 py-2 text-xs bg-contro-card border border-contro-border rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-contro-blue">
+      </div>
+
+      <!-- Totals Breakdown -->
+      <div class="space-y-1.5 pt-2 border-t border-contro-border text-xs">
+        <div class="flex justify-between text-slate-400">
+          <span>Estimated Job Subtotal:</span>
+          <span id="cart-subtotal" class="font-bold text-slate-200">R0.00</span>
+        </div>
+        <div class="flex justify-between text-slate-400">
+          <span>Logistics / Courier:</span>
+          <span id="cart-shipping-fee" class="font-bold text-slate-200">Workshop Collection</span>
+        </div>
+        <div class="flex justify-between text-sm font-black text-white pt-2 border-t border-contro-border">
+          <span>Estimated Quote Total:</span>
+          <span id="cart-grandtotal" class="text-contro-blue">R0.00</span>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="space-y-2 pt-1">
+        <button onclick="sendWhatsAppOrder()" class="w-full py-3 bg-contro-green hover:bg-green-600 text-white font-extrabold rounded-xl shadow-lg shadow-green-600/20 flex items-center justify-center gap-2 text-xs sm:text-sm transition active:scale-95">
+          <i data-lucide="message-circle" class="w-4 h-4"></i>
+          Send Quote to ControSign WhatsApp
+        </button>
+        <div class="grid grid-cols-2 gap-2">
+          <button onclick="openFormalQuoteModal()" class="py-2.5 bg-contro-blue hover:bg-contro-blueHover text-white font-bold rounded-xl flex items-center justify-center gap-1.5 text-xs transition">
+            <i data-lucide="file-text" class="w-3.5 h-3.5"></i> Official PDF Quote
+          </button>
+          <button onclick="copyQuoteToClipboard()" class="py-2.5 bg-contro-card hover:bg-slate-800 text-slate-200 border border-contro-border font-bold rounded-xl flex items-center justify-center gap-1.5 text-xs transition">
+            <i data-lucide="copy" class="w-3.5 h-3.5"></i> Copy Quote Text
+          </button>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ================================================================= -->
+  <!-- FORMAL PRINTABLE QUOTATION MODAL (ADAPTED FROM JT SUPPLIES)       -->
+  <!-- ================================================================= -->
+  <div id="quote-modal" class="fixed inset-0 bg-black/80 backdrop-blur-xs z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white text-slate-900 rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-slate-200 flex flex-col">
+      <div class="p-4 border-b border-slate-200 flex justify-between items-center bg-slate-100">
+        <h3 class="font-extrabold text-slate-900 text-sm flex items-center gap-2">
+          <i data-lucide="printer" class="w-4 h-4 text-contro-blue"></i> Official CONTROSIGN Estimate / Quotation
+        </h3>
+        <button onclick="closeFormalQuoteModal()" class="text-slate-500 hover:text-slate-800 p-1 rounded-lg">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <div id="quote-modal-content" class="p-6 text-xs text-slate-800 space-y-5 bg-white">
+        <!-- Dynamically populated via JS -->
+      </div>
+
+      <div class="p-4 border-t border-slate-200 bg-slate-100 flex justify-end gap-2">
+        <button onclick="window.print()" class="px-4 py-2 bg-contro-blue hover:bg-contro-blueHover text-white font-bold rounded-xl flex items-center gap-1.5 text-xs">
+          <i data-lucide="printer" class="w-3.5 h-3.5"></i> Print / Save as PDF
+        </button>
+        <button onclick="closeFormalQuoteModal()" class="px-4 py-2 bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold rounded-xl text-xs">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-5 right-5 z-50 bg-contro-card border border-contro-border text-white px-4 py-3 rounded-xl shadow-2xl flex items-center gap-3 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none text-xs">
+    <i data-lucide="check-circle" class="w-4 h-4 text-contro-green"></i>
+    <span id="toast-message">Service added to quote</span>
+  </div>
+
+  <!-- ================================================================= -->
+  <!-- JAVASCRIPT LOGIC                                                  -->
+  <!-- ================================================================= -->
+  <script>
+    // Service & Product Database including the UV Direct Printing services and Core Capabilities
+    const controServices = [
+      // UV Direct Printing Category
+      {
+        id: "uv-dto-bottles-pens",
+        name: "UV Direct-to-Object (Pens, Bottles, Balls)",
+        spec: "Full-Colour UV LED Direct Cylindrical & Flat Print",
+        category: "uv-printing",
+        retailPrice: 350,
+        wholesalePrice: 280,
+        unitLabel: "batch / setup",
+        tag: "UV Direct Printing",
+        badgeColor: "bg-blue-600",
+        turnaround: "24–48 Hrs",
+        Description: "Precision full-colour UV direct printing onto pens, drinkware bottles, golf balls, flash drives, and corporate gifts."
+      },
+      {
+        id: "uv-golf-balls",
+        name: "UV Direct Golf Ball & Sports Branding",
+        spec: "Scratch-Resistant Ink • Custom Logos & Names",
+        category: "uv-printing",
+        retailPrice: 420,
+        wholesalePrice: 340,
+        unitLabel: "per dozen pack",
+        tag: "UV Direct Printing",
+        badgeColor: "bg-blue-600",
+        turnaround: "24–48 Hrs",
+        Description: "Direct-to-object UV branding on golf balls, promotional spheres, and tournament merchandise with durable UV-cured ink."
+      },
+      {
+        id: "uv-dome-printing",
+        name: "High-Gloss Dome Printing (Resin Badges)",
+        spec: "UV Print + Polyurethane 3D Clear Dome Coat",
+        category: "uv-printing",
+        retailPrice: 450,
+        wholesalePrice: 360,
+        unitLabel: "per sheet / batch",
+        tag: "High-Gloss Dome",
+        badgeColor: "bg-indigo-600",
+        turnaround: "2–3 Days",
+        Description: "High-gloss 3D polyurethane domed decals and badges. UV and scratch-resistant finish for machinery, vehicles, and branding."
+      },
+      {
+        id: "uv-promo-branding",
+        name: "Custom Promotional Corporate Branding",
+        spec: "Multi-Surface UV Print (Acrylic, Wood, Metal, Leather)",
+        category: "uv-printing",
+        retailPrice: 550,
+        wholesalePrice: 450,
+        unitLabel: "per pack",
+        tag: "Promo Branding",
+        badgeColor: "bg-cyan-600",
+        turnaround: "2–3 Days",
+        Description: "Bespoke promotional branding on notebooks, powerbanks, awards, and corporate gifts with raised varnish gloss textures."
+      },
+
+      // Printing & Cutting Category
+      {
+        id: "print-large-format",
+        name: "Large Format & Poster Printing",
+        spec: "High-DPI Eco-Solvent / UV Roll-to-Roll Print",
+        category: "printing",
+        retailPrice: 295,
+        wholesalePrice: 235,
+        unitLabel: "per m²",
+        tag: "Printing & Cutting",
+        badgeColor: "bg-emerald-600",
+        turnaround: "24 Hrs",
+        Description: "Vibrant large format posters, PVC banners, engineering plans, and indoor/outdoor retail displays."
+      },
+      {
+        id: "print-vinyl-contour",
+        name: "Vinyl Cutting & Contour Cut Stickers",
+        spec: "Precision Die-Cut & Kiss-Cut Polymeric Vinyl",
+        category: "printing",
+        retailPrice: 260,
+        wholesalePrice: 210,
+        unitLabel: "per m²",
+        tag: "Vinyl & Contour",
+        badgeColor: "bg-emerald-600",
+        turnaround: "24 Hrs",
+        Description: "Custom contour-cut decals, safety stickers, frosted window graphics, and die-cut company logos."
+      },
+      {
+        id: "print-vehicle-wrap",
+        name: "Vehicle Wraps & Fleet Branding",
+        spec: "Cast Vinyl Wrap + UV Laminate Protection",
+        category: "printing",
+        retailPrice: 1850,
+        wholesalePrice: 1550,
+        unitLabel: "per panel / section",
+        tag: "Fleet Branding",
+        badgeColor: "bg-emerald-600",
+        turnaround: "2–4 Days",
+        Description: "Commercial fleet branding, cab decals, magnetic door signs, and full colour-change or printed vehicle wraps."
+      },
+      {
+        id: "print-wallpaper-tshirt",
+        name: "Custom Wallpaper & T-Shirt Sublimation",
+        spec: "Textured Wall Murals & Heat-Transfer Apparel",
+        category: "printing",
+        retailPrice: 380,
+        wholesalePrice: 310,
+        unitLabel: "per unit / m²",
+        tag: "Apparel & Decor",
+        badgeColor: "bg-teal-600",
+        turnaround: "2–3 Days",
+        Description: "Bespoke interior feature wallpapers, branded workwear t-shirts, and 3D/sublimation promotional textiles."
+      },
+
+      // CO2 & Fiber Laser Systems Category
+      {
+        id: "laser-panel-labels",
+        name: "Industrial Control Panel Labels & Mimics",
+        spec: "Traffolyte / Anodised Aluminium / Stainless Steel",
+        category: "laser",
+        retailPrice: 480,
+        wholesalePrice: 390,
+        unitLabel: "per panel sheet",
+        tag: "CO₂ & Fiber Laser",
+        badgeColor: "bg-amber-600",
+        turnaround: "24–48 Hrs",
+        Description: "Precision laser-engraved switchgear labels, electrical mimic panels, pushbutton tags, and serial plates."
+      },
+      {
+        id: "laser-acrylic-wood",
+        name: "Acrylic Fabrication & Wood Engraving",
+        spec: "Polished-Edge CO₂ Laser Cut & Custom Etching",
+        category: "laser",
+        retailPrice: 420,
+        wholesalePrice: 340,
+        unitLabel: "per job / sheet",
+        tag: "Laser Fabrication",
+        badgeColor: "bg-amber-600",
+        turnaround: "24–48 Hrs",
+        Description: "Custom stencil cutting, architectural perspex signage, trophy fabrication, and personalised wooden gifts."
+      },
+
+      // Flat Bed & CNC Solutions Category
+      {
+        id: "flatbed-packaging",
+        name: "Custom Packaging & Polycard Contouring",
+        spec: "Flatbed Print, Crease & Oscillating Knife Cut",
+        category: "flatbed",
+        retailPrice: 650,
+        wholesalePrice: 520,
+        unitLabel: "per batch",
+        tag: "Flat Bed Solution",
+        badgeColor: "bg-purple-600",
+        turnaround: "2–3 Days",
+        Description: "Short-run custom product boxes, point-of-sale display stands, cardboard prototypes, and kiss-cut vinyl sheets."
+      },
+      {
+        id: "flatbed-cnc-milling",
+        name: "Shape Milling (Max 20mm) & CNC Profiling",
+        spec: "Acrylic, ACM, PVC Foamboard, Wood & Composite",
+        category: "flatbed",
+        retailPrice: 780,
+        wholesalePrice: 640,
+        unitLabel: "per sheet / run",
+        tag: "CNC Milling",
+        badgeColor: "bg-purple-600",
+        turnaround: "2–3 Days",
+        Description: "Heavy-duty shape milling up to 20mm thickness for 3D dimensional lettering, industrial jigs, and custom fascias."
+      }
+    ];
+
+    // State
+    let currentCategory = 'all';
+    let currentPricingMode = 'retail'; // 'retail' | 'wholesale'
+    let searchQuery = '';
+    let cart = {}; // { serviceId: qty }
+
+    window.onload = function() {
+      updateCategoryCounts();
+      renderProductGrid();
+      document.getElementById('year-tag').textContent = new Date().getFullYear();
+      lucide.createIcons();
+    };
+
+    function updateCategoryCounts() {
+      document.getElementById('count-all').textContent = controServices.length;
+      document.getElementById('count-uv').textContent = controServices.filter(p => p.category === 'uv-printing').length;
+      document.getElementById('count-printing').textContent = controServices.filter(p => p.category === 'printing').length;
+      document.getElementById('count-laser').textContent = controServices.filter(p => p.category === 'laser').length;
+      document.getElementById('count-flatbed').textContent = controServices.filter(p => p.category === 'flatbed').length;
+    }
+
+    function quickSelectCategory(cat) {
+      filterCategory(cat);
+      document.getElementById('quote-section').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function setPricingMode(mode) {
+      currentPricingMode = mode;
+      const retailBtn = document.getElementById('mode-retail-btn');
+      const wholesaleBtn = document.getElementById('mode-wholesale-btn');
+      const headline = document.getElementById('active-tier-headline');
+      const cartLabel = document.getElementById('cart-tier-label');
+
+      if (mode === 'retail') {
+        retailBtn.className = "px-3 py-2 text-xs font-bold rounded-lg transition bg-contro-blue text-white shadow-xs";
+        wholesaleBtn.className = "px-3 py-2 text-xs font-bold rounded-lg text-slate-400 hover:text-white transition";
+        headline.textContent = "Standard Production Run";
+        cartLabel.textContent = "Standard Production Pricing";
+      } else {
+        wholesaleBtn.className = "px-3 py-2 text-xs font-bold rounded-lg transition bg-contro-blue text-white shadow-xs";
+        retailBtn.className = "px-3 py-2 text-xs font-bold rounded-lg text-slate-400 hover:text-white transition";
+        headline.textContent = "Trade & Bulk Run (10+ Units)";
+        cartLabel.textContent = "Trade Bulk Discount Applied";
+      }
+
+      renderProductGrid();
+      updateCartTotals();
+      renderCartDrawerItems();
+    }
+
+    function filterCategory(cat) {
+      currentCategory = cat;
+      const tabs = document.querySelectorAll('.cat-tab');
+      tabs.forEach(tab => {
+        if (tab.getAttribute('data-cat') === cat) {
+          tab.className = "cat-tab px-4 py-2.5 rounded-xl text-xs font-bold whitespace-nowrap bg-contro-blue text-white transition";
+        } else {
+          tab.className = "cat-tab px-4 py-2.5 rounded-xl text-xs font-semibold whitespace-nowrap bg-contro-card text-slate-300 border border-contro-border hover:border-slate-600 transition";
+        }
+      });
+      renderProductGrid();
+    }
+
+    function handleSearch() {
+      searchQuery = document.getElementById('search-box').value.toLowerCase().trim();
+      renderProductGrid();
+    }
+
+    function resetFilters() {
+      document.getElementById('search-box').value = '';
+      searchQuery = '';
+      filterCategory('all');
+    }
+
+    function renderProductGrid() {
+      const grid = document.getElementById('product-grid');
+      const emptyState = document.getElementById('empty-state');
+      grid.innerHTML = '';
+
+      const items = controServices.filter(item => {
+        const matchesCat = currentCategory === 'all' || item.category === currentCategory;
+        const matchesSearch = item.name.toLowerCase().includes(searchQuery) ||
+                              item.spec.toLowerCase().includes(searchQuery) ||
+                              item.Description.toLowerCase().includes(searchQuery);
+        return matchesCat && matchesSearch;
+      });
+
+      if (items.length === 0) {
+        emptyState.classList.remove('hidden');
+        return;
+      } else {
+        emptyState.classList.add('hidden');
+      }
+
+      items.forEach(service => {
+        const price = currentPricingMode === 'wholesale' ? service.wholesalePrice : service.retailPrice;
+
+        const card = document.createElement('div');
+        card.className = "bg-contro-card rounded-2xl border border-contro-border hover:border-contro-blue/60 transition-all duration-200 flex flex-col justify-between overflow-hidden group";
+
+        card.innerHTML = `
+          <div class="p-5 flex-grow">
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="inline-flex items-center text-[10px] font-extrabold text-white px-2.5 py-1 rounded-full uppercase tracking-wider ${service.badgeColor}">
+                ${service.tag}
+              </span>
+              <span class="text-[11px] font-medium text-slate-400 bg-contro-bg px-2.5 py-0.5 rounded-md border border-contro-border flex items-center gap-1">
+                <i data-lucide="clock" class="w-3 h-3 text-contro-blue"></i> ${service.turnaround}
+              </span>
+            </div>
+
+            <h3 class="text-base font-extrabold text-white group-hover:text-contro-blue transition leading-snug">
+              ${service.name}
+            </h3>
+            <p class="text-xs font-semibold text-contro-blue mt-1 mb-2">${service.spec}</p>
+            <p class="text-xs text-slate-400 leading-relaxed mb-4">${service.Description}</p>
+          </div>
+
+          <div class="p-5 pt-0">
+            <div class="flex items-baseline justify-between mb-4 pt-3 border-t border-contro-border">
+              <div>
+                <span class="text-[10px] text-slate-400 uppercase font-bold block">
+                  ${currentPricingMode === 'wholesale' ? 'Trade Bulk Rate (10+)' : 'Estimated Base Rate'}
+                </span>
+                <div class="flex items-baseline gap-1">
+                  <span class="text-2xl font-black text-white">R${price}</span>
+                  <span class="text-xs text-slate-400 font-medium">/ ${service.unitLabel}</span>
+                </div>
+              </div>
+              <div class="text-right">
+                <span class="text-[10px] font-bold text-emerald-400 bg-emerald-950/60 border border-emerald-800 px-2 py-0.5 rounded">
+                  ${currentPricingMode === 'wholesale' ? 'Trade Active' : 'R' + service.wholesalePrice + ' on 10+'}
+                </span>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-2">
+              <div class="flex items-center border border-contro-border rounded-xl bg-contro-bg overflow-hidden w-28 shrink-0">
+                <button onclick="adjustQtyInput('${service.id}', -1)" class="w-8 h-9 flex items-center justify-center text-slate-300 hover:bg-slate-800 text-sm font-bold">-</button>
+                <input type="number" id="qty-input-${service.id}" value="1" min="1" max="500" class="w-12 h-9 text-center bg-transparent text-xs font-bold text-white focus:outline-none">
+                <button onclick="adjustQtyInput('${service.id}', 1)" class="w-8 h-9 flex items-center justify-center text-slate-300 hover:bg-slate-800 text-sm font-bold">+</button>
+              </div>
+
+              <button onclick="addProductToCart('${service.id}')" class="flex-grow bg-contro-blue hover:bg-contro-blueHover text-white py-2.5 px-3 rounded-xl font-bold text-xs flex items-center justify-center gap-1.5 transition active:scale-95">
+                <i data-lucide="plus" class="w-4 h-4"></i> Add to Quote
+              </button>
+            </div>
+          </div>
+        `;
+
+        grid.appendChild(card);
+      });
+
+      lucide.createIcons();
+    }
+
+    function adjustQtyInput(id, delta) {
+      const input = document.getElementById(`qty-input-${id}`);
+      if (input) {
+        let val = parseInt(input.value) || 1;
+        val += delta;
+        if (val < 1) val = 1;
+        input.value = val;
+      }
+    }
+
+    function addProductToCart(serviceId) {
+      const input = document.getElementById(`qty-input-${serviceId}`);
+      const qtyToAdd = input ? parseInt(input.value) || 1 : 1;
+
+      if (!cart[serviceId]) cart[serviceId] = 0;
+      cart[serviceId] += qtyToAdd;
+
+      if (input) input.value = 1;
+
+      const s = controServices.find(item => item.id === serviceId);
+      showToast(`Added ${qtyToAdd} × ${s.name} to quote`);
+      updateCartBadge();
+      renderCartDrawerItems();
+      updateCartTotals();
+    }
+
+    function updateCartItemQty(serviceId, newQty) {
+      if (newQty <= 0) {
+        delete cart[serviceId];
+      } else {
+        cart[serviceId] = newQty;
+      }
+      updateCartBadge();
+      renderCartDrawerItems();
+      updateCartTotals();
+    }
+
+    function updateCartBadge() {
+      const totalUnits = Object.values(cart).reduce((a, b) => a + b, 0);
+      document.getElementById('cart-counter').textContent = totalUnits;
+    }
+
+    function renderCartDrawerItems() {
+      const container = document.getElementById('cart-items-container');
+      container.innerHTML = '';
+
+      const keys = Object.keys(cart);
+      if (keys.length === 0) {
+        container.innerHTML = `
+          <div class="text-center py-14 text-slate-500">
+            <i data-lucide="file-spreadsheet" class="w-12 h-12 mx-auto mb-3 opacity-30"></i>
+            <p class="text-sm font-bold text-slate-300">Your quote list is empty</p>
+            <p class="text-xs text-slate-500 mt-1">Select capabilities or printing services to generate an instant quote.</p>
+          </div>
+        `;
+        lucide.createIcons();
+        return;
+      }
+
+      const totalQuantityInCart = Object.values(cart).reduce((a, b) => a + b, 0);
+
+      keys.forEach(id => {
+        const item = controServices.find(p => p.id === id);
+        const qty = cart[id];
+        const isBulk = (currentPricingMode === 'wholesale') || (qty >= 10) || (totalQuantityInCart >= 10);
+        const unitPrice = isBulk ? item.wholesalePrice : item.retailPrice;
+        const lineTotal = unitPrice * qty;
+
+        const row = document.createElement('div');
+        row.className = "flex items-center justify-between p-3.5 rounded-xl border border-contro-border bg-contro-bg gap-3";
+        row.innerHTML = `
+          <div class="flex-grow">
+            <h4 class="text-xs font-bold text-white leading-tight">${item.name}</h4>
+            <div class="flex items-center gap-2 mt-1">
+              <span class="text-[11px] text-slate-400 font-medium">R${unitPrice}.00 / ${item.unitLabel}</span>
+              ${isBulk ? '<span class="text-[9px] font-bold text-emerald-300 bg-emerald-950 px-1.5 py-0.5 rounded border border-emerald-800">Trade Rate</span>' : ''}
+            </div>
+            <span class="text-xs font-black text-contro-blue mt-1 block">Line Total: R${lineTotal.toFixed(2)}</span>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <div class="flex items-center border border-contro-border rounded-lg bg-contro-card">
+              <button onclick="updateCartItemQty('${id}', ${qty - 1})" class="w-6 h-7 text-xs font-bold text-slate-300 hover:bg-slate-800 flex items-center justify-center">-</button>
+              <span class="w-7 text-center text-xs font-bold text-white">${qty}</span>
+              <button onclick="updateCartItemQty('${id}', ${qty + 1})" class="w-6 h-7 text-xs font-bold text-slate-300 hover:bg-slate-800 flex items-center justify-center">+</button>
+            </div>
+            <button onclick="updateCartItemQty('${id}', 0)" class="text-slate-500 hover:text-rose-500 p-1">
+              <i data-lucide="trash-2" class="w-4 h-4"></i>
+            </button>
+          </div>
+        `;
+        container.appendChild(row);
+      });
+
+      lucide.createIcons();
+    }
+
+    function updateCartTotals() {
+      const keys = Object.keys(cart);
+      const totalUnits = Object.values(cart).reduce((a, b) => a + b, 0);
+
+      let subtotal = 0;
+      keys.forEach(id => {
+        const item = controServices.find(p => p.id === id);
+        const qty = cart[id];
+        const isBulk = (currentPricingMode === 'wholesale') || (qty >= 10) || (totalUnits >= 10);
+        const price = isBulk ? item.wholesalePrice : item.retailPrice;
+        subtotal += price * qty;
+      });
+
+      const zoneSelect = document.getElementById('cart-delivery-zone');
+      let shipping = 0;
+      let shippingText = "Workshop Collection (Free)";
+
+      if (zoneSelect) {
+        const val = zoneSelect.value;
+        if (val === 'durban_metro') {
+          shipping = 150;
+          shippingText = "R150.00";
+        } else if (val === 'kzn_regional') {
+          shipping = 250;
+          shippingText = "R250.00";
+        } else if (val === 'national_courier') {
+          shipping = 350;
+          shippingText = "R350.00";
+        }
+      }
+
+      const grandTotal = subtotal + shipping;
+
+      document.getElementById('cart-subtotal').textContent = `R${subtotal.toFixed(2)}`;
+      document.getElementById('cart-shipping-fee').textContent = shippingText;
+      document.getElementById('cart-grandtotal').textContent = `R${grandTotal.toFixed(2)}`;
+
+      return { subtotal, shipping, grandTotal, totalUnits, shippingText };
+    }
+
+    function openCart() {
+      document.getElementById('cart-drawer-overlay').classList.remove('opacity-0', 'pointer-events-none');
+      document.getElementById('cart-drawer').classList.remove('translate-x-full');
+      renderCartDrawerItems();
+      updateCartTotals();
+    }
+
+    function closeCart() {
+      document.getElementById('cart-drawer-overlay').classList.add('opacity-0', 'pointer-events-none');
+      document.getElementById('cart-drawer').classList.add('translate-x-full');
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toast-message').textContent = msg;
+      toast.classList.remove('translate-y-20', 'opacity-0');
+      setTimeout(() => {
+        toast.classList.add('translate-y-20', 'opacity-0');
+      }, 2500);
+    }
+
+    function buildOrderString() {
+      const keys = Object.keys(cart);
+      if (keys.length === 0) return null;
+
+      const custName = document.getElementById('cust-name-input').value.trim() || 'Valued Client';
+      const custPhone = document.getElementById('cust-phone-input').value.trim() || 'Not specified';
+      const custNotes = document.getElementById('cust-notes-input').value.trim() || 'Standard specs';
+      const zoneSelect = document.getElementById('cart-delivery-zone');
+      const deliveryText = zoneSelect.options[zoneSelect.selectedIndex].text;
+      const { subtotal, shipping, grandTotal, totalUnits } = updateCartTotals();
+
+      let text = `*NEW JOB QUOTE REQUEST - CONTROSIGN*\n`;
+      text += `=====================================\n`;
+      text += `*Client:* ${custName}\n`;
+      text += `*Contact:* ${custPhone}\n`;
+      text += `*Job Notes:* ${custNotes}\n`;
+      text += `*Logistics:* ${deliveryText}\n\n`;
+      text += `*REQUESTED SERVICES:*\n`;
+
+      keys.forEach((id, idx) => {
+        const prod = controServices.find(p => p.id === id);
+        const qty = cart[id];
+        const isBulk = (currentPricingMode === 'wholesale') || (qty >= 10) || (totalUnits >= 10);
+        const price = isBulk ? prod.wholesalePrice : prod.retailPrice;
+        text += `${idx + 1}. *${prod.name}*\n`;
+        text += `   - Spec: ${prod.spec}\n`;
+        text += `   - Qty: ${qty} (${prod.unitLabel}) @ R${price}.00 = R${(qty * price).toFixed(2)}\n`;
+      });
+
+      text += `\n=====================================\n`;
+      text += `*Estimated Subtotal:* R${subtotal.toFixed(2)}\n`;
+      if (shipping > 0) text += `*Courier Fee:* R${shipping.toFixed(2)}\n`;
+      text += `*ESTIMATED TOTAL:* R${grandTotal.toFixed(2)}\n`;
+      text += `\nPlease confirm lead time and artwork requirements. Thank you!`;
+
+      return text;
+    }
+
+    function sendWhatsAppOrder() {
+      const text = buildOrderString();
+      if (!text) {
+        showToast("Please add services to your quote first");
+        return;
+      }
+      const whatsappNumber = "27820000000"; // Replace with official ControSign WhatsApp number
+      const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
+      window.open(url, '_blank');
+    }
+
+    function copyQuoteToClipboard() {
+      const text = buildOrderString();
+      if (!text) {
+        showToast("Your quote list is empty");
+        return;
+      }
+      navigator.clipboard.writeText(text).then(() => {
+        showToast("Quote copied to clipboard!");
+      }).catch(() => {
+        showToast("Failed to copy quote");
+      });
+    }
+
+    function openFormalQuoteModal() {
+      const keys = Object.keys(cart);
+      if (keys.length === 0) {
+        showToast("Your quote list is empty. Add a service first.");
+        return;
+      }
+
+      const modal = document.getElementById('quote-modal');
+      const container = document.getElementById('quote-modal-content');
+      const custName = document.getElementById('cust-name-input').value.trim() || 'Valued Client';
+      const custPhone = document.getElementById('cust-phone-input').value.trim() || 'N/A';
+      const custNotes = document.getElementById('cust-notes-input').value.trim() || 'Standard production specification';
+      const zoneSelect = document.getElementById('cart-delivery-zone');
+      const deliveryText = zoneSelect.options[zoneSelect.selectedIndex].text;
+      const { subtotal, shipping, grandTotal, totalUnits } = updateCartTotals();
+      const quoteNo = 'CS-' + Math.floor(100000 + Math.random() * 900000);
+      const today = new Date().toLocaleDateString('en-ZA', { year: 'numeric', month: 'long', day: 'numeric' });
+
+      let rowsHtml = '';
+      keys.forEach((id, idx) => {
+        const item = controServices.find(p => p.id === id);
+        const qty = cart[id];
+        const isBulk = (currentPricingMode === 'wholesale') || (qty >= 10) || (totalUnits >= 10);
+        const price = isBulk ? item.wholesalePrice : item.retailPrice;
+        rowsHtml += `
+          <tr class="border-b border-slate-200">
+            <td class="py-2.5 px-3 text-slate-500">${idx + 1}</td>
+            <td class="py-2.5 px-3">
+              <span class="font-bold text-slate-900 block">${item.name}</span>
+              <span class="text-[10px] text-slate-500">${item.spec}</span>
+            </td>
+            <td class="py-2.5 px-3 text-center font-bold">${qty}</td>
+            <td class="py-2.5 px-3 text-right">R${price}.00</td>
+            <td class="py-2.5 px-3 text-right font-black">R${(qty * price).toFixed(2)}</td>
+          </tr>
+        `;
+      });
+
+      container.innerHTML = `
+        <div class="flex justify-between items-start border-b border-slate-200 pb-4">
+          <div>
+            <h2 class="text-xl font-black text-slate-900 tracking-tight font-display">CONTRO<span class="text-[#0070f3]">SIGN</span></h2>
+            <p class="text-slate-500 text-[11px]">Precision Engineering, Laser Fabrication, UV Printing & CNC Solutions</p>
+            <p class="text-slate-500 text-[11px]">Unit 13, Reach Park, 28 Cordova Close, Briardene, Durban, 4051</p>
+          </div>
+          <div class="text-right">
+            <span class="px-2.5 py-1 rounded bg-slate-100 text-slate-900 font-mono font-bold text-[11px] block">ESTIMATE #${quoteNo}</span>
+            <span class="text-slate-500 text-[11px] block mt-1">Date: ${today}</span>
+            <span class="text-slate-500 text-[11px] block">Valid: 14 Days</span>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4 bg-slate-50 p-3.5 rounded-xl border border-slate-200">
+          <div>
+            <span class="text-[10px] uppercase font-bold text-slate-400">Prepared For:</span>
+            <p class="font-bold text-slate-900 text-xs">${custName}</p>
+            <p class="text-slate-600 text-xs">Contact: ${custPhone}</p>
+            <p class="text-slate-600 text-[11px] mt-1"><strong>Notes:</strong> ${custNotes}</p>
+          </div>
+          <div>
+            <span class="text-[10px] uppercase font-bold text-slate-400">Collection / Logistics:</span>
+            <p class="font-bold text-slate-900 text-xs">${deliveryText}</p>
+            <p class="text-slate-600 text-xs mt-1">Rate Tier: ${totalUnits >= 10 || currentPricingMode === 'wholesale' ? 'Trade Bulk (10+)' : 'Standard Production'}</p>
+          </div>
+        </div>
+
+        <table class="w-full text-left border border-slate-200 rounded-xl overflow-hidden">
+          <thead class="bg-slate-100 text-[10px] uppercase font-bold text-slate-600 border-b border-slate-200">
+            <tr>
+              <th class="py-2 px-3">#</th>
+              <th class="py-2 px-3">Service / Fabrication Description</th>
+              <th class="py-2 px-3 text-center">Qty</th>
+              <th class="py-2 px-3 text-right">Unit Rate</th>
+              <th class="py-2 px-3 text-right">Total (ZAR)</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${rowsHtml}
+          </tbody>
+        </table>
+
+        <div class="flex justify-end pt-2">
+          <div class="w-64 space-y-1.5 text-right">
+            <div class="flex justify-between text-slate-600">
+              <span>Subtotal:</span>
+              <span class="font-bold">R${subtotal.toFixed(2)}</span>
+            </div>
+            ${shipping > 0 ? `
+              <div class="flex justify-between text-slate-600">
+                <span>Courier / Logistics:</span>
+                <span class="font-bold">R${shipping.toFixed(2)}</span>
+              </div>
+            ` : ''}
+            <div class="flex justify-between text-sm font-black text-slate-900 pt-2 border-t border-slate-200">
+              <span>Estimated Total:</span>
+              <span class="text-[#0070f3]">R${grandTotal.toFixed(2)}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="border-t border-slate-200 pt-3 text-[10px] text-slate-500 leading-relaxed">
+          <p><strong>Terms:</strong> Final pricing subject to vector artwork inspection (PDF/DXF/AI/CDR) and material thickness verification. 50% deposit required upon artwork approval prior to production run.</p>
+        </div>
+      `;
+
+      modal.classList.remove('hidden');
+      lucide.createIcons();
+    }
+
+    function closeFormalQuoteModal() {
+      document.getElementById('quote-modal').classList.add('hidden');
+    }
+  </script>
 </body>
 </html>
