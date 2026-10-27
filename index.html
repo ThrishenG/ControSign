@@ -112,7 +112,7 @@
 
         <!-- Floating Quote Drawer Button -->
         <button onclick="openCart()" class="relative flex items-center gap-2.5 bg-contro-card hover:bg-slate-800 border border-contro-border text-white px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm shadow-lg transition active:scale-95">
-          <i data-lucide="file-Spreadsheet" class="w-4 h-4 text-contro-blue"></i>
+          <i data-lucide="file-spreadsheet" class="w-4 h-4 text-contro-blue"></i>
           <span>Quote List</span>
           <span id="cart-counter" class="bg-contro-blue text-white text-xs font-extrabold w-5 h-5 rounded-full flex items-center justify-center">0</span>
         </button>
@@ -225,7 +225,7 @@
         </div>
       </div>
 
-      <!-- Card 4: UV Direct Printing (Requested Snippet) -->
+      <!-- Card 4: UV Direct Printing -->
       <div class="bg-contro-card border border-contro-blue/80 rounded-2xl overflow-hidden shadow-lg shadow-contro-blue/5 hover:border-contro-blue transition duration-300 flex flex-col justify-between group">
         <div>
           <div class="h-52 overflow-hidden bg-slate-900 relative">
@@ -298,7 +298,7 @@
     </div>
   </section>
 
-  <!-- Interactive Service Catalogue & Quote Builder Section (Referenced from JT Supplies) -->
+  <!-- Interactive Service Catalogue & Quote Builder Section -->
   <section id="quote-section" class="py-16 px-4 sm:px-6 lg:px-8 bg-[#0e1117] border-y border-contro-border">
     <div class="max-w-7xl mx-auto">
       
@@ -377,7 +377,7 @@
     </div>
   </section>
 
-  <!-- Connect with Experts & Map Section (Retained from Screenshot 1) -->
+  <!-- Connect with Experts & Map Section -->
   <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto w-full">
     <div class="bg-contro-card border border-contro-border rounded-3xl p-6 sm:p-10 lg:p-12 shadow-2xl">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
@@ -392,18 +392,18 @@
           </div>
 
           <div class="space-y-3.5 pt-2">
-            <!-- Green WhatsApp Button -->
-            <a href="https://wa.me/27820000000?text=Hi%20ControSign%2C%20I%20would%20like%20to%20enquire%20about%20your%20services." target="_blank" class="w-full py-4 px-6 bg-[#22c55e] hover:bg-[#16a34a] text-white font-bold rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-green-600/20 transition active:scale-98 text-sm sm:text-base">
+            <!-- Green WhatsApp Button (Updated to 0835223700) -->
+            <a href="https://wa.me/27835223700?text=Hi%20ControSign%2C%20I%20would%20like%20to%20enquire%20about%20your%20services." target="_blank" class="w-full py-4 px-6 bg-[#22c55e] hover:bg-[#16a34a] text-white font-bold rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-green-600/20 transition active:scale-98 text-sm sm:text-base">
               WhatsApp Us
             </a>
 
-            <!-- Blue Call Office Button -->
-            <a href="tel:+27310000000" class="w-full py-4 px-6 bg-[#0070f3] hover:bg-[#005bb5] text-white font-bold rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-blue-600/20 transition active:scale-98 text-sm sm:text-base">
+            <!-- Blue Call Office Button (Updated to 0835223700) -->
+            <a href="tel:+27835223700" class="w-full py-4 px-6 bg-[#0070f3] hover:bg-[#005bb5] text-white font-bold rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-blue-600/20 transition active:scale-98 text-sm sm:text-base">
               Call Office
             </a>
 
-            <!-- Dark Grey Email Enquiries Button -->
-            <a href="mailto:info@controsign.co.za" class="w-full py-4 px-6 bg-[#2a2e37] hover:bg-[#353a46] text-white font-bold rounded-xl flex items-center justify-center gap-2 border border-slate-700 transition active:scale-98 text-sm sm:text-base">
+            <!-- Dark Grey Email Enquiries Button (Updated to devash@controsign.co.za) -->
+            <a href="mailto:devash@controsign.co.za" class="w-full py-4 px-6 bg-[#2a2e37] hover:bg-[#353a46] text-white font-bold rounded-xl flex items-center justify-center gap-2 border border-slate-700 transition active:scale-98 text-sm sm:text-base">
               Email Enquiries
             </a>
           </div>
@@ -443,9 +443,7 @@
     </div>
   </footer>
 
-  <!-- ================================================================= -->
-  <!-- SLIDE-OVER QUOTE DRAWER (ADAPTED FROM JT SUPPLIES)                -->
-  <!-- ================================================================= -->
+  <!-- Slide-Over Quote Drawer -->
   <div id="cart-drawer-overlay" onclick="closeCart()" class="fixed inset-0 bg-black/75 backdrop-blur-xs z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
 
   <aside id="cart-drawer" class="fixed top-0 right-0 h-full w-full max-w-md bg-contro-card border-l border-contro-border z-50 shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col text-slate-100">
@@ -525,9 +523,7 @@
     </div>
   </aside>
 
-  <!-- ================================================================= -->
-  <!-- FORMAL PRINTABLE QUOTATION MODAL (ADAPTED FROM JT SUPPLIES)       -->
-  <!-- ================================================================= -->
+  <!-- Formal Printable Quotation Modal -->
   <div id="quote-modal" class="fixed inset-0 bg-black/80 backdrop-blur-xs z-50 hidden flex items-center justify-center p-4">
     <div class="bg-white text-slate-900 rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-slate-200 flex flex-col">
       <div class="p-4 border-b border-slate-200 flex justify-between items-center bg-slate-100">
@@ -560,11 +556,8 @@
     <span id="toast-message">Service added to quote</span>
   </div>
 
-  <!-- ================================================================= -->
-  <!-- JAVASCRIPT LOGIC                                                  -->
-  <!-- ================================================================= -->
+  <!-- JAVASCRIPT LOGIC -->
   <script>
-    // Service & Product Database including the UV Direct Printing services and Core Capabilities
     const controServices = [
       // UV Direct Printing Category
       {
@@ -731,11 +724,10 @@
       }
     ];
 
-    // State
     let currentCategory = 'all';
-    let currentPricingMode = 'retail'; // 'retail' | 'wholesale'
+    let currentPricingMode = 'retail';
     let searchQuery = '';
-    let cart = {}; // { serviceId: qty }
+    let cart = {};
 
     window.onload = function() {
       updateCategoryCounts();
@@ -1089,7 +1081,7 @@
         showToast("Please add services to your quote first");
         return;
       }
-      const whatsappNumber = "27820000000"; // Replace with official ControSign WhatsApp number
+      const whatsappNumber = "27835223700"; // Updated phone number
       const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
       window.open(url, '_blank');
     }
@@ -1150,7 +1142,7 @@
           <div>
             <h2 class="text-xl font-black text-slate-900 tracking-tight font-display">CONTRO<span class="text-[#0070f3]">SIGN</span></h2>
             <p class="text-slate-500 text-[11px]">Precision Engineering, Laser Fabrication, UV Printing & CNC Solutions</p>
-            <p class="text-slate-500 text-[11px]">Unit 13, Reach Park, 28 Cordova Close, Briardene, Durban, 4051</p>
+            <p class="text-slate-500 text-[11px]">Unit 13, Reach Park, 28 Cordova Close, Briardene, Durban, 4051 | Email: devash@controsign.co.za</p>
           </div>
           <div class="text-right">
             <span class="px-2.5 py-1 rounded bg-slate-100 text-slate-900 font-mono font-bold text-[11px] block">ESTIMATE #${quoteNo}</span>
@@ -1208,7 +1200,7 @@
         </div>
 
         <div class="border-t border-slate-200 pt-3 text-[10px] text-slate-500 leading-relaxed">
-          <p><strong>Terms:</strong> Final pricing subject to vector artwork inspection (PDF/DXF/AI/CDR) and material thickness verification. 50% deposit required upon artwork approval prior to production run.</p>
+          <p><strong>Terms:</strong> Final pricing subject to vector artwork inspection (PDF/DXF/AI/CDR) and material thickness verification. 50% deposit required upon artwork approval prior to production run. Enquiries: devash@controsign.co.za</p>
         </div>
       `;
 
